@@ -69,6 +69,7 @@ class Config:
         self.bound_channels = config.get('Chat', 'BindToChannels', fallback=ConfigDefaults.bound_channels)
         self.autojoin_channels =  config.get('Chat', 'AutojoinChannels', fallback=ConfigDefaults.autojoin_channels)
         self.auto_groupid = config.get('Chat', 'AutogroupID', fallback=ConfigDefaults.owner_id)
+        self.stream_alert_channel = config.get('Chat', 'StreamAlertChannel', fallback=ConfigDefaults.stream_alert_channel)
 
         self.default_volume = config.getfloat('MusicBot', 'DefaultVolume', fallback=ConfigDefaults.default_volume)
         self.skips_required = config.getint('MusicBot', 'SkipsRequired', fallback=ConfigDefaults.skips_required)
@@ -179,6 +180,7 @@ class ConfigDefaults:
     owner_id = None
     command_prefix = '!'
     bound_channels = set()
+    stream_alert_channel = set()
     autojoin_channels = set()
 
     default_volume = 0.15

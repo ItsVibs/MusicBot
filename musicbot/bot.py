@@ -2030,10 +2030,11 @@ class MusicBot(discord.Client):
         Alert Someone Is Live
         """
         if streamname:
+            StreamChannel = self.get_channel(self.config.stream_alert_channel)
             alertmsg = '@everyone https://www.twitch.tv/{}'.format(streamname)
             newmsg = discord.Embed(title='Twitch.tv', description='```ini\n [{} Is Live On Twitch]```'.format(streamname) ,colour=0x00FFFF)
             newmsg.set_thumbnail(url='https://www.shareicon.net/data/128x128/2016/11/14/852244_twitch_512x512.png')
-            self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, alertmsg, embed=newmsg)
+            self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(StreamChannel, alertmsg, embed=newmsg)
         else:
             return Response("Please Enter A Stream Name")
     
