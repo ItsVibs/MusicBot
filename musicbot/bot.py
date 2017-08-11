@@ -395,8 +395,8 @@ class MusicBot(discord.Client):
                 usermsg = '{}'.format(entry.meta['author'].mention)
                 newmsg = discord.Embed(title='Your song is now playing in {}!'.format(player.voice_client.channel.name), description='```ini\n Song Name: [{}]\n Song Length: [{}]```'.format(
 				    entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':')) ,colour=0x00FFFF)
-                newmsg.set_thumbnail(url='https://cdn.pixabay.com/photo/2017/01/09/20/11/music-1967480_960_720.png')
-                newmsg.set_footer(text='Bot Originally Created By sexualrhinocerous Discord.py V0.12.0. Updated And Ran By Vibs Discord.py V0.16.8')
+                newmsg.set_thumbnail(url='https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_play_circle_filled_black_24px.svg')
+                newmsg.set_footer(text='VibsBot')
                 #% (entry.meta['author'].mention, player.voice_client.channel.name, entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':'), )
                 #newmsg = '%s - your song is now playing in %s!```cs\n Song Name: #%s\n Song Length: #%s```' % (
                     #entry.meta['author'].mention, player.voice_client.channel.name, entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':'), )
@@ -751,8 +751,8 @@ class MusicBot(discord.Client):
                 return Response("No such command")
 
         else:
-            helpmsg = discord.Embed(title='Heres All The Commands', description='```cs\n !blacklist, !clean, !clear, !disconnect, !id, !joinserver, !listids, !np, !pause, !perms, !play, !pldump, !queue, !restart, !resume, !search, !setavatar, !setname, !setnick, !shuffle, !shutdown, !skip, !summon, !volume, !meow, !stream```',colour=0xAB0000)
-            helpmsg.set_thumbnail(url='http://www.freeiconspng.com/uploads/help-icon-3.png')
+            helpmsg = discord.Embed(title='Commands', description='```cs\n !blacklist, !clean, !clear, !disconnect, !id, !joinserver, !listids, !np, !pause, !perms, !play, !pldump, !queue, !restart, !resume, !search, !setavatar, !setname, !setnick, !shuffle, !shutdown, !skip, !summon, !volume, !meow, !stream```',colour=0xAB0000)
+            helpmsg.set_thumbnail(url='https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_help_outline_black_24px.svg')
             self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=helpmsg)
             #return Response(Embed=helpmsg, reply=True,)
 
