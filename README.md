@@ -1,10 +1,10 @@
 # VibsBot: The music bot for Discord.
 
-MusicBot is a Discord music bot written in [Python](https://www.python.org "Python homepage"). It plays requested songs and if the queue becomes empty it will play through a list of existing songs.
+VibsBot is a music bot that you can simply host yourself, written in [Python](https://www.python.org).
 
 ### How do I set it up?
 
-[CLICK HERE](https://github.com/SexualRhinoceros/MusicBot/wiki) to find the guide that suites your operating system.
+[CLICK HERE](https://github.com/SexualRhinoceros/MusicBot/wiki) to find the guide that suits your operating system.
 
 ### Commands
 
