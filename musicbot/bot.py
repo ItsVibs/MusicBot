@@ -2041,13 +2041,14 @@ class MusicBot(discord.Client):
     @client.event
     async def on_member_join(self, member):
         if self.config.auto_welcome:
+            WelcomeChannel = self.get_channel(self.auto_welcomechannel)
             server = member.server
             fmt = 'Welcome {0.mention}!'
             servermessage = self.config.welcome_message.format(server)
             msgwelcome = discord.Embed(title='{}'.format(server), description='```ini\n [{}]```'.format(servermessage) ,colour=0x00FFFF)
             msgwelcome.set_image(url='http://bot.vibs.tech/images/botimages/welcome.png')
             msgwelcome.set_footer(text='Bot Developed By Vibs. Owner Of Discord Channel MemeSquad')
-            await self.send_message(server, fmt.format(member), embed=msgwelcome)
+            await self.send_message(WelcomeChannel, fmt.format(member), embed=msgwelcome)
         if self.config.auto_groupenable:
             roles = discord.utils.get(server.roles, id=self.config.auto_groupid)
             await self.add_roles(member, roles)

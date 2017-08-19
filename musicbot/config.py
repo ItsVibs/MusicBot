@@ -84,6 +84,7 @@ class Config:
         self.delete_messages  = config.getboolean('MusicBot', 'DeleteMessages', fallback=ConfigDefaults.delete_messages)
         self.delete_invoking = config.getboolean('MusicBot', 'DeleteInvoking', fallback=ConfigDefaults.delete_invoking)
         self.debug_mode = config.getboolean('MusicBot', 'DebugMode', fallback=ConfigDefaults.debug_mode)
+        self.auto_welcomechannel = config.getboolean('MusicBot', 'AutoWelcomeChannel', fallback=ConfigDefaults.auto_welcomechannel)
 
         self.blacklist_file = config.get('Files', 'BlacklistFile', fallback=ConfigDefaults.blacklist_file)
         self.auto_playlist_file = config.get('Files', 'AutoPlaylistFile', fallback=ConfigDefaults.auto_playlist_file)
@@ -181,6 +182,7 @@ class ConfigDefaults:
     command_prefix = '!'
     bound_channels = set()
     stream_alert_channel = set()
+	auto_welcomechannel = set()
     autojoin_channels = set()
 
     default_volume = 0.15
