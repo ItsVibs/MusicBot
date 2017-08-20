@@ -2041,7 +2041,7 @@ class MusicBot(discord.Client):
     @client.event
     async def on_member_join(self, member):
         if self.config.auto_welcome:
-            WelcomeChannel = self.get_channel(self.auto_welcomechannel)
+            WelcomeChannel = self.get_channel(self.config.auto_welcomechannel)
             server = member.server
             fmt = 'Welcome {0.mention}!'
             servermessage = self.config.welcome_message.format(server)
