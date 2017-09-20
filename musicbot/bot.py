@@ -395,8 +395,8 @@ class MusicBot(discord.Client):
                 usermsg = '{}'.format(entry.meta['author'].mention)
                 newmsg = discord.Embed(title='Your song is now playing in {}!'.format(player.voice_client.channel.name), description='```ini\n Song Name: [{}]\n Song Length: [{}]```'.format(
 				    entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':')) ,colour=0x00FFFF)
-                newmsg.set_thumbnail(url='http://bot.vibs.tech/images/botimages/PlayLogo.png')
-                newmsg.set_footer(text='VibsBot')
+                newmsg.set_thumbnail(url='https://bot.vibs.tech/botsite/images/botimages/PlayLogo.png')
+                newmsg.set_footer(text='VibsBot https://bot.vibs.tech')
                 #% (entry.meta['author'].mention, player.voice_client.channel.name, entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':'), )
                 #newmsg = '%s - your song is now playing in %s!```cs\n Song Name: #%s\n Song Length: #%s```' % (
                     #entry.meta['author'].mention, player.voice_client.channel.name, entry.title, str(timedelta(seconds=player.current_entry.duration)).lstrip('0').lstrip(':'), )
@@ -752,7 +752,8 @@ class MusicBot(discord.Client):
 
         else:
             helpmsg = discord.Embed(title='Commands', description='```cs\n !blacklist, !clean, !clear, !disconnect, !id, !joinserver, !listids, !np, !pause, !perms, !play, !pldump, !queue, !restart, !resume, !search, !setavatar, !setname, !setnick, !shuffle, !shutdown, !skip, !summon, !volume, !meow, !stream```',colour=0xAB0000)
-            helpmsg.set_thumbnail(url='http://bot.vibs.tech/images/botimages/HelpLogo.png')
+            helpmsg.set_thumbnail(url='https://bot.vibs.tech/botsite/images/botimages/HelpLogo.png')
+            helpmsg.set_footer(text='VibsBot https://bot.vibs.tech')
             self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=helpmsg)
             #return Response(Embed=helpmsg, reply=True,)
 
@@ -1489,7 +1490,7 @@ class MusicBot(discord.Client):
         if 0 < new_volume <= 100:
             player.volume = new_volume / 100.0
             newmsg = discord.Embed(title='Volume Changed!'.format(player.voice_client.channel.name), description='The Volume Was Changed From {} To {}'.format(old_volume, new_volume) ,colour=0x22FF00)
-            newmsg.set_thumbnail(url='http://bot.vibs.tech/images/botimages/audiologo.png')
+            newmsg.set_thumbnail(url='https://bot.vibs.tech/botsite/images/botimages/audiologo.png')
             #return Response('```cs\n#updated volume from %d to %d ```' % (old_volume, new_volume), reply=True, delete_after=20)
             self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=newmsg)
 
@@ -2020,7 +2021,7 @@ class MusicBot(discord.Client):
         Scare Away Cats!
         """
         newmsg = discord.Embed(title='PUPPER ALERTED!', description='```ini\n [BORK BORK BORK BORK BORK]```',colour=0x00FFFF)
-        newmsg.set_thumbnail(url='http://bot.vibs.tech/images/botimages/pupper.jpg')
+        newmsg.set_thumbnail(url='https://bot.vibs.tech/botsite/images/botimages/pupper.jpg')
         self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=newmsg)
     async def cmd_stream(self, channel, streamname=None):
         """
@@ -2033,7 +2034,7 @@ class MusicBot(discord.Client):
             StreamChannel = self.get_channel(self.config.stream_alert_channel)
             alertmsg = '@everyone https://www.twitch.tv/{}'.format(streamname)
             newmsg = discord.Embed(title='Twitch.tv', description='```ini\n [{} Is Live On Twitch]```'.format(streamname) ,colour=0x00FFFF)
-            newmsg.set_thumbnail(url='http://bot.vibs.tech/images/botimages/twitch.png')
+            newmsg.set_thumbnail(url='https://bot.vibs.tech/botsite/images/botimages/twitch.png')
             self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(StreamChannel, alertmsg, embed=newmsg)
         else:
             return Response("Please Enter A Stream Name")
@@ -2046,8 +2047,8 @@ class MusicBot(discord.Client):
             fmt = 'Welcome {0.mention}!'
             servermessage = self.config.welcome_message.format(server)
             msgwelcome = discord.Embed(title='{}'.format(server), description='```ini\n [{}]```'.format(servermessage) ,colour=0x00FFFF)
-            msgwelcome.set_image(url='http://bot.vibs.tech/images/botimages/welcome.png')
-            msgwelcome.set_footer(text='Bot Developed By Vibs. Owner Of Discord Channel MemeSquad')
+            msgwelcome.set_image(url='https://bot.vibs.tech/botsite/images/botimages/welcome.png')
+            msgwelcome.set_footer(text='Bot Developed By Vibs. https://vibs.tech')
             await self.send_message(WelcomeChannel, fmt.format(member), embed=msgwelcome)
         if self.config.auto_groupenable:
             roles = discord.utils.get(server.roles, id=self.config.auto_groupid)
