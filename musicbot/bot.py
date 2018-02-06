@@ -751,11 +751,18 @@ class MusicBot(discord.Client):
                 return Response("No such command")
 
         else:
-            helpmsg = discord.Embed(title='Commands', description='```cs\n !blacklist, !clean, !clear, !disconnect, !id, !joinserver, !listids, !np, !pause, !perms, !play, !pldump, !queue, !restart, !resume, !search, !setavatar, !setname, !setnick, !shuffle, !shutdown, !skip, !summon, !volume, !meow, !stream```',colour=0xAB0000)
-            helpmsg.set_thumbnail(url='https://image.ibb.co/fAE4rb/discordbot_Play_Icon_3.png')
-            helpmsg.set_footer(text='VibsBot https://bot.vibs.tech')
+            helpmsg = "**Available commands**\n```"
+            commands = []
+
+            for att in dir(self):
+                if att.startswith('cmd_') and att != 'cmd_help' and not hasattr(getattr(self, att), 'dev_cmd'):
+                    command_name = att.replace('cmd_', '').lower()
+                    commands.append('{}{}'.format(self.config.command_prefix, command_name))
+			
+            helpmsg = discord.Embed(title='Commands', description= ", ".join(commands) , colour=0xAB0000) 
+            helpmsg.set_footer(text='You can also use `{}help x` for more info about each command.'.format(self.config.command_prefix)) 
+
             self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=helpmsg)
-            #return Response(Embed=helpmsg, reply=True,)
 
     async def cmd_blacklist(self, message, user_mentions, option, something):
         """
