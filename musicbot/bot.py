@@ -2057,6 +2057,26 @@ class MusicBot(discord.Client):
         newmsg = discord.Embed(title='Server Info', description='Server Created: ***`{}`*** \nMembers: ***`{}`*** \n\n**Roles** \n{}'.format(servercreatedate, servermemberlist, serverroles) ,colour=0x00FFFF)
         newmsg.set_thumbnail(url=servericonurl)
         self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, embed=newmsg)
+		
+    async def cmd_userinfo(self, message, channel):
+        """
+        Usage:
+            {command_prefix}userinfo
+
+        Show basic user info.
+        """
+        usermsg = "{}".format(message.author.mention)
+        userid = message.author.id
+        username = message.author.name
+        usercreatedate = message.author.created_at
+        usericonurl = message.author.avatar_url
+		
+        memeberjoinedserver = message.author.joined_at
+        memberroles = "\n".join(role.mention for role in message.author.roles)
+		
+        newmsg = discord.Embed(title='User Info', description='Account Name: ***`{}`*** \nAccount ID: ***`{}`*** \nAccount Created: ***`{}`***\n\nJoined Server: ***`{}`*** \nRoles: \n{}'.format(username, userid, usercreatedate, memeberjoinedserver, memberroles) ,colour=0x00FFFF)
+        newmsg.set_thumbnail(url=usericonurl)
+        self.server_specific_data[channel.server]['last_np_msg'] = await self.send_message(channel, usermsg, embed=newmsg)
 
     async def cmd_stream(self, channel, streamname=None):
         """
